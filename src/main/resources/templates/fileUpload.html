@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div>
+    <h2> Data upload Service</h2>
+    <form method = "POST" enctype="multipart/form-data" action="/" onsubmit="myFunction()" style="float: left">
+    <table>
+        <tr>
+            <td>File to Upload</td>
+            <td> <input type ="file" name="file" required/></td>
+        </tr>
+        <tr>
+
+            <td><label for ="serverName"> Server Name</label>
+             <td>   <input type ="text" name="serverName" id="serverName" value="sqlserversupreeth89" required>
+            </td>
+            <td><label for ="databaseName"> Database Name</label>
+               <td> <input type ="text" id = "databaseName" name="databaseName" value="sqlserversupreeth89db" required>
+                </td>
+        </tr>
+        <tr>
+            <td><label for ="userName"> User name</label>
+            <td> <input type ="text" name="userName" id="userName" value="sqlserversupreeth89" required/></td>
+            <td><label for ="password"> Password </label>
+               <td> <input type ="password" name="password" id="password" value="Bigdata@123" minlength=8 required/></td>
+        </tr>
+        <tr>
+            <td><label for ="schemaName"> Schema Name</label>
+            <td> <input type ="text" name="schemaName" value="schema"  id="schemaName" required/></td>
+            <td><label for ="tableName"> Table Name </label>
+            <td> <input type ="text" name="tableName" id="tableName" value="Employee" required/></td>
+        </tr>
+        <tr>
+            <td>First row as header: </td>
+            <td> <input type="checkbox" id="firstRowAsHeader" name="firstRowAsHeader" value="Yes" >
+                <label for="firstRowAsHeader"></label></td>
+        </tr>
+        <tr>
+            <td>Auto-create table: </td>
+            <td> <input type="checkbox" id="autoCreateTable" name="autoCreateTable" value="Yes" >
+                <label for="autoCreateTable"></label></td>
+        </tr>
+        <tr>
+            <td>Row Delimiter </td>
+            <td> <select  id="rowDelimiter" name="rowDelimiter">
+                <option value="|(Pipe)">| (Pipe)</option>
+                <option value=",(Comma)">, (Comma)</option>
+            </select></td>
+        </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Upload"/></td>
+                <td th:text="${retVal} ? 'file contents are uploaded to the table '+ ${sqlInfo.tableName} : ''" />
+            </tr>
+
+
+    </table>
+    </form>
+    <script>
+        function myFunction() {
+            alert( "Form submitted successfully");
+        }
+
+    </script>
+</div>
+
+</body>
+</html>
