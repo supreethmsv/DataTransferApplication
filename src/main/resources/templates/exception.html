@@ -6,15 +6,13 @@
 </head>
 <body>
 <h1>Error Page</h1>
-<p>Application has encountered an error. Please contact support on ...</p>
-<p th:text="'Hello, ' + ${exception.message} + '!'" />
+<p>Application has encountered an error. Please look at the below stack trace and fix the issue.</p>
+<p th:text="'Error is, ' + ${exception.message} + '!'" />
+<br>
+<p th:text="'Stack trace, ' + ${exception.getStackTrace()} + '!'" />
+<br>
+<p th:text="'Detailed stack trace, ' + ${exception.printStackTrace()} + '!'" />
+<br>
 
-
-
-<!--
-  Exception:  ${exception.message}
-      <c:forEach items="${exception.message}" var="ste">    ${ste}
-  </c:forEach>
--->
 </body>
 </html>

@@ -17,23 +17,23 @@
         <tr>
 
             <td><label for ="serverName"> Server Name</label>
-             <td>   <input type ="text" name="serverName" id="serverName" value="sqlserversupreeth89" required>
+             <td>   <input type ="text" name="serverName" id="serverName" value="server" required>
             </td>
             <td><label for ="databaseName"> Database Name</label>
-               <td> <input type ="text" id = "databaseName" name="databaseName" value="sqlserversupreeth89db" required>
+               <td> <input type ="text" id = "databaseName" name="databaseName" value="database" required>
                 </td>
         </tr>
         <tr>
             <td><label for ="userName"> User name</label>
-            <td> <input type ="text" name="userName" id="userName" value="sqlserversupreeth89" required/></td>
+            <td> <input type ="text" name="userName" id="userName" value="username" required/></td>
             <td><label for ="password"> Password </label>
-               <td> <input type ="password" name="password" id="password" value="Bigdata@123" minlength=8 required/></td>
+               <td> <input type ="password" name="password" id="password" value="password" minlength=8 required/></td>
         </tr>
         <tr>
             <td><label for ="schemaName"> Schema Name</label>
             <td> <input type ="text" name="schemaName" value="schema"  id="schemaName" required/></td>
             <td><label for ="tableName"> Table Name </label>
-            <td> <input type ="text" name="tableName" id="tableName" value="Employee" required/></td>
+            <td> <input type ="text" name="tableName" id="tableName" value="table" required/></td>
         </tr>
         <tr>
             <td>First row as header: </td>
@@ -56,7 +56,7 @@
             <tr>
                 <td></td>
                 <td><input type="submit" value="Upload"/></td>
-                <td th:text="${retVal} ? 'file contents are uploaded to the table '+ ${sqlInfo.tableName} : ''" />
+                <td th:text="${isInsert} ? 'file contents are uploaded to the table '+ ${sqlInfo.tableName} : ''" />
             </tr>
 
 

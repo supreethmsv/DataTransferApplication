@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.stream.Stream;
 
 @Controller
@@ -34,31 +31,20 @@ public class FileController {
         ModelAndView modelAndView = new ModelAndView();
         Stream<String> streamData = storageService.getData(file);
         try {
-            System.out.println(sqlInfo.isFirstRowAsHeader());
-            boolean retVal = todoRepository.save(streamData, sqlInfo);
-            model.addAttribute("retVal", retVal);
+            boolean isInsert = todoRepository.save(streamData, sqlInfo);
+            model.addAttribute("isInsert", isInsert);
         } catch(Exception exception) {
             modelAndView.addObject("exception", exception);
             modelAndView.setViewName("exception");
-            model.addAttribute("retVal", false);
+            model.addAttribute("isInsert", false);
             return modelAndView;
         }
         modelAndView.setViewName("fileUpload");
         return modelAndView;
     }
 
-    @GetMapping("/greet")
-    public String greet(Model model) throws IOException {
-
-        /*model.addAttribute("files", storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethodName(FileController.class,
-                        "serveFile", path.getFileName().toString()).build().toUri().toString())
-                .collect(Collectors.toList()));*/
-
-        return "fileUpload";
-    }
     @GetMapping("/")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public String getFile(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "fileUpload";
     }
